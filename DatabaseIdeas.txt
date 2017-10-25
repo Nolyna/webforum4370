@@ -3,9 +3,18 @@ Information that could be put in database:
 		Username
 		Password
 		Email
-		First & Last Name
+		First & Last Name/About
 	
-	For Web Forum:
-		Posts on the forum
-		Information about the posts (time & date, who posted it)
-		Comments on posts
+	For Posts:
+		ID
+		Text
+		ID Category
+		Image
+	
+	For Comments:
+		ID
+		Text
+		
+	For Likes:
+		User
+		Post
