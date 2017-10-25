@@ -1,5 +1,6 @@
 Information that could be put in database:
 	For Users:
+		UserID
 		Username
 		Password
 		Email
@@ -11,10 +12,12 @@ Information that could be put in database:
 		Text
 		ID Category
 		Image
+		Timestamp
 	
 	For Comments:
 		ID
 		Text
+		Timestamp
 		
 	For Likes:
 		User
