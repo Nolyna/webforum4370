@@ -1,0 +1,11 @@
+Information that could be put in database:
+	For Users:
+		Username
+		Password
+		Email
+		First & Last Name
+	
+	For Web Forum:
+		Posts on the forum
+		Information about the posts (time & date, who posted it)
+		Comments on posts
