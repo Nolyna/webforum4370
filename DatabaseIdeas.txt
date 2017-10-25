@@ -4,6 +4,7 @@ Information that could be put in database:
 		Password
 		Email
 		First & Last Name/About
+		Type of user
 	
 	For Posts:
 		ID
