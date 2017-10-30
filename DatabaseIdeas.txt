@@ -20,5 +20,13 @@ Information that could be put in database:
 		Timestamp
 		
 	For Likes:
-		User
-		Post
+		UserId
+		PostID
+	
+	For type user
+		typeID
+		typeText
+		
+	For categorie
+		categoryID
+		categoryText
