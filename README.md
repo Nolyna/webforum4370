@@ -7,8 +7,6 @@
 
 ## Status
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)
-[![Build Status](https://travis-ci.org/BlackrockDigital/startbootstrap-blog-post.svg?branch=master)](https://travis-ci.org/BlackrockDigital/startbootstrap-blog-post)
 
 ## Download 
 To begin using this projectyou can:
@@ -35,4 +33,4 @@ Forum is an open source project. It is released under the MIT license, which mea
 
 ## Copyright and License
 
-Copyright 2013-2017 Blackrock Digital LLC. Code released under the [MIT](https://github.com/BlackrockDigital/startbootstrap-blog-post/blob/gh-pages/LICENSE) license.
+Copyright 2017.
