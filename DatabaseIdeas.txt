@@ -23,10 +23,10 @@ Information that could be put in database:
 		UserId
 		PostID
 	
-	For type user
+	For type user { user, guest, admin}
 		typeID
 		typeText
 		
-	For categorie
+	For categorie { android, IOS, web app, windows, database}
 		categoryID
 		categoryText
