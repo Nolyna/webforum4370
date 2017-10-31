@@ -1,6 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
+<?php
+	include ("userlogin.php");
+	if(isset($_POST["email"]) && isset($_POST["password"])){
+		$log = userlogin($_POST["email"], $_POST["password"]);
+		if($log == true){
+			header("location:home.php");
+		}
+	}
+?>
     <head>
 
         <meta charset="utf-8">
@@ -25,18 +33,24 @@
                 <div class="media">
                     <img class="align-self-center mr-1" src="../assets/door.jpeg" alt="Generic placeholder image">
                     <div class="media-body justify-content-md-center">
-                        <form>
-                            <h2> Login</h2>
+                        <form action = "userlogin.php" method = "post">
+                            <h2>Login</h2>
                             <div class="form-group">
-                                <label for="email">Email address</label>
-                                <input type="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name = "email" id="email" aria-describedby="emailHelp" placeholder="Username">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Password">
+                                <input type="password" class="form-control" name = "password" id="password" placeholder="Password">
                             </div>
+							<?php
+							if(isset($log) && $log == false){
+								echo "<p class='text-danger'> Information incorrect. </p>";
+							}
+							?>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
+						
                     </div>
                 </div>
 
@@ -45,8 +59,6 @@
 
         </div>
         <!-- /.container -->
-
-        
 
         <!-- Bootstrap core JavaScript -->
         <script src="../vendor/jquery/jquery.min.js"></script>
