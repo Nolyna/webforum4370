@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le :  lun. 30 oct. 2017 à 03:52
+-- Généré le :  mar. 31 oct. 2017 à 19:26
 -- Version du serveur :  5.7.17
 -- Version de PHP :  5.6.30
 
@@ -55,7 +55,8 @@ CREATE TABLE `comment` (
   `commentID` int(11) NOT NULL,
   `cmmentText` text NOT NULL,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `postId` int(11) NOT NULL
+  `postId` int(11) NOT NULL,
+  `userID` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -80,7 +81,8 @@ CREATE TABLE `post` (
   `postText` text NOT NULL,
   `image` text,
   `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
-  `categoryID` int(11) DEFAULT NULL
+  `categoryID` int(11) DEFAULT NULL,
+  `userID` int(11) NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -134,14 +136,16 @@ ALTER TABLE `category`
 --
 ALTER TABLE `comment`
   ADD PRIMARY KEY (`commentID`),
-  ADD KEY `postId` (`postId`);
+  ADD KEY `postId` (`postId`),
+  ADD KEY `userID` (`userID`);
 
 --
 -- Index pour la table `post`
 --
 ALTER TABLE `post`
   ADD PRIMARY KEY (`postID`),
-  ADD KEY `categoryindex` (`categoryID`);
+  ADD KEY `categoryindex` (`categoryID`),
+  ADD KEY `userID` (`userID`);
 
 --
 -- Index pour la table `typeuser`
