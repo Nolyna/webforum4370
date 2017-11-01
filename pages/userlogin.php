@@ -11,7 +11,7 @@
 	}
 	function userlogin($email, $password) {
 		if($email != "" && $password != ""){
-			$query = mysql_query("SELECT * FROM  WHERE name ="'.$email.'" AND password="'.$password.'"") or die(mysql_error());
+			$query = mysql_query("SELECT * FROM user WHERE name ="'.$email.'" AND password="'.$password.'"") or die(mysql_error());
 			$result = mysql_fetch_row($query);
 			$i = 2;
 			$j = 3;
