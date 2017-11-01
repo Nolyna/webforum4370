@@ -27,7 +27,7 @@
                     <img class="align-self-center mr-1" src="../assets/door.jpeg" alt="Generic placeholder image">
                     <div class="media-body justify-content-md-center">
                         <form action = "usersignup.php" method = "post">
-                            <h2> SignUp</h2>
+                            <h2> Sign Up</h2>
                             <div class="form-group">
                                 <label for="username">Username</label>
                                 <input type="text" class="form-control" id="username" name = "username" placeholder="Username">
