@@ -3,6 +3,7 @@
 <html lang="en">
 <?php
 	include ("userlogin.php");
+	$_SESSION["email"] = ;
 	if(isset($_POST["email"]) && isset($_POST["password"])){
 		$log = userlogin($_POST["email"], $_POST["password"]);
 		if($log == true){
