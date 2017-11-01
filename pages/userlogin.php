@@ -8,7 +8,7 @@
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			$i = 2;
 			$j = 3;
-			if($email == mysql_fetch_field($result, $i) && $password == mysql_fetch_field($result, $j)){
+			if($email == $result["email"] && $password == $result["password"]){
 				return true;
 			} else {
 				return false;
