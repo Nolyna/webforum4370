@@ -4,8 +4,8 @@
 		$email = $_POST["email"];;
 		$password = $_POST["password"];
 		if($email != "" && $password != ""){
-			$stmt = $db->query("SELECT * FROM user WHERE email =" .$email. " AND password=" .$password. "");
-			/*$result = mysql_fetch_row($query);*/
+			$stmt = $db->query("SELECT email, password FROM user WHERE email =" .$email. " AND password=" .$password. "");
+			$result = $stmt->fetch(PDO::FETCH_ASSOC);
 			$i = 2;
 			$j = 3;
 			if($email == mysql_fetch_field($result, $i) && $password == mysql_fetch_field($result, $j)){
