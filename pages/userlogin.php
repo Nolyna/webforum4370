@@ -1,18 +1,11 @@
 <?php
-	function dbconnect(){
-		$servername = "localhost";
-		$username = "root";
-		$password = "";
-		$conn = mysql_connect($servername, $username, $password);
-		if (!$conn){
-			return $conn;
-		}
-		
-	}
-	function userlogin($email, $password) {
+	$db = new PDO("mysql:host=localhost;dbname=csc4370forum", "root", "");
+	function userlogin($db) {
+		$email = $_POST["email"];;
+		$password = $_POST["password"];
 		if($email != "" && $password != ""){
-			$query = mysql_query("SELECT * FROM user WHERE email =" .$email. " AND password=" .$password. "") or die(mysql_error());
-			$result = mysql_fetch_row($query);
+			$stmt = $db->query("SELECT * FROM user WHERE email =" .$email. " AND password=" .$password. "");
+			/*$result = mysql_fetch_row($query);*/
 			$i = 2;
 			$j = 3;
 			if($email == mysql_fetch_field($result, $i) && $password == mysql_fetch_field($result, $j)){
