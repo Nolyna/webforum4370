@@ -1,7 +1,7 @@
 <?php
 	function dbconnect(){
-		$servername = "";
-		$username = "";
+		$servername = "localhost";
+		$username = "root";
 		$password = "";
 		$conn = mysql_connect($servername, $username, $password);
 		if (!$conn){
@@ -11,7 +11,7 @@
 	}
 	function userlogin($email, $password) {
 		if($email != "" && $password != ""){
-			$query = mysql_query("SELECT * FROM user WHERE name ="'.$email.'" AND password="'.$password.'"") or die(mysql_error());
+			$query = mysql_query("SELECT * FROM user WHERE email =" .$email. " AND password=" .$password. "") or die(mysql_error());
 			$result = mysql_fetch_row($query);
 			$i = 2;
 			$j = 3;
