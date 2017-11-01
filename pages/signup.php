@@ -33,6 +33,14 @@
                                 <input type="text" class="form-control" id="username" name = "username" placeholder="Username">
                             </div>
                             <div class="form-group">
+                                <label for="firstname">First Name</label>
+                                <input type="text" class="form-control" id="firstname" name = "firstname" placeholder="First Name">
+                            </div>
+							<div class="form-group">
+                                <label for="lastname">Last Name</label>
+                                <input type="text" class="form-control" id="lastname" name = "lastname" placeholder="Last Name">
+                            </div>
+							<div class="form-group">
                                 <label for="email">Email address</label>
                                 <input type="text" class="form-control" id="email" name = "email" aria-describedby="emailHelp" placeholder="Email">
                             </div>
@@ -40,14 +48,7 @@
                                 <label for="password">Password</label>
                                 <input type="password" class="form-control" id="password" name = "password" placeholder="Password">
                             </div>
-							<div class="form-group">
-                                <label for="firstname">First Name</label>
-                                <input type="text" class="form-control" id="password" name = "firstname" placeholder="First Name">
-                            </div>
-							<div class="form-group">
-                                <label for="lastname">Last Name</label>
-                                <input type="text" class="form-control" id="password" name = "lastname" placeholder="Last Name">
-                            </div>
+							
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
                     </div>
