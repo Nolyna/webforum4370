@@ -1,20 +1,14 @@
 <?php
-	$db = new PDO("mysql:host=localhost;dbname=csc4370forum", "root", "");
-	function userlogin($db) {
-		$email = $_POST["email"];;
-		$password = $_POST["password"];
+	function userlogin($email, $password) {
+		$db = new PDO("mysql:host=localhost;dbname=csc4370forum", "root", "");
 		if($email != "" && $password != ""){
 			$stmt = $db->query("SELECT email, password FROM user WHERE email =" .$email. " AND password=" .$password. "");
 			$result = $stmt->fetch(PDO::FETCH_ASSOC);
-			$i = 2;
-			$j = 3;
 			if($email == $result["email"] && $password == $result["password"]){
-				return true;
+				header("location:home.php");
 			} else {
-				return false;
+				header("location:login.php");
 			}
-		} else {
-			return false;
 		}
 	}
 ?>
