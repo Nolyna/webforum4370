@@ -15,12 +15,28 @@
               <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
             </form>
           </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="login.php">Login /</a>
-          </li>
-          <li class="nav-item active">
-            <a class="nav-link" href="signup.php">Signup</a>
-          </li>
+          <?php
+            if(isset($_SESSION['username']) && !empty($_SESSION['username'])){
+              echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                '.$_SESSION["username"].'
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="profile.php"> Dashboard</a>
+                  <a class="dropdown-item" href="logout.php"> Logout</a>
+                </div>
+              </li>';
+            }else{
+              echo
+              '<li class="nav-item active">
+                <a class="nav-link" href="login.php">Login /</a>
+              </li>
+              <li class="nav-item active">
+                <a class="nav-link" href="signup.php">Signup</a>
+              </li>';
+            }
+          ?>
+
         </ul>
       </div>
     </div>

@@ -1,5 +1,9 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
+<?php
+  session_start();
+  include_once '../include/dbfunction.php';
+  include_once '../include/postfunction.php';
+?>
 <html lang="en">
 
   <head>
@@ -11,10 +15,7 @@
 
     <title> Home </title>
 
-    <!-- Bootstrap core CSS -->
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Custom styles for this template -->
     <link href="../css/blog-post.css" rel="stylesheet">
 
   </head>
@@ -26,99 +27,99 @@
     <!-- Page Content -->
     <div class="container">
 
-      <div class="row">
-
         <!-- Content Column -->
-        <div class="col-lg-8">
+        <div class="">
+
             <!-- Tab list -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                    <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Profile</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" id="contact-tab" data-toggle="tab" href="#contact" role="tab" aria-controls="contact" aria-selected="false">Contact</a>
-                </li>
+                <?php
+                  $categories = getCategories();
+                  foreach ($categories as  $i =>  $category) {
+                    if($i == 0){
+                      echo
+                      '<li class="nav-item">
+                          <a class="nav-link active" id="'.$category["categoryText"].'-tab" data-toggle="tab" href="#'.$category["categoryText"].'" role="tab" aria-controls="'.$category["categoryText"].'" aria-selected="true">'.$category["categoryText"].'</a>
+                      </li>';
+                    }else{
+                      echo
+                      '<li class="nav-item">
+                          <a class="nav-link" id="'.$category["categoryText"].'-tab" data-toggle="tab" href="#'.$category["categoryText"].'" role="tab" aria-controls="'.$category["categoryText"].'" aria-selected="true">'.$category["categoryText"].'</a>
+                      </li>';
+                    }
+                  }
+                ?>
             </ul>
 
-            <!-- Tab Content -->
-            <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">...</div>
-            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">...</div>
-            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">...</div>
-            </div>
-          
+            <div class="row">
 
+              <!-- Tab Content column -->
+              <div class="col-lg-8">
+                <div class="tab-content" id="myTabContent">
+                <?php
+                  foreach ($categories as  $i => $category) {
+                    $posts = array_filter(getPostCat($category["categoryID"]));
+                    if($i == 0){
+                      echo '<div class="tab-pane fade show active" id="'.$category["categoryText"].'" role="tabpanel" aria-labelledby="'.$category["categoryText"].'-tab"> ';
+                        if (empty($posts)) {
+                          echo '<div class="jumbotron jumbotron-fluid">
+                                  <div class="container">
+                                    <p class="lead">Sorry, there is no posts in this category yet.</p>
+                                  </div>
+                                </div>';
+                        }else{
+                          foreach ($posts as $post) {
+                            echo '<div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">'.$post["postTitle"].'</h4>
+                                <h6 class="card-subtitle mb-2 text-muted"> Posted on '. $post["timestamp"].' </h6>
+                                <p class="card-text"> '.substr($post["postText"], 0, 100).'....</p>
+                                <a href="postdetails.php?post='.$post["postID"].'" class="card-link"> See more</a>
+                              </div>
+                            </div>';
+                          }
+                        }
+                      echo '</div>';
+                    }else{
+                      echo '<div class="tab-pane fade" id="'.$category["categoryText"].'" role="tabpanel" aria-labelledby="'.$category["categoryText"].'-tab"> ';
+                        if (empty($posts)) {
+                          echo '<div class="jumbotron jumbotron-fluid">
+                                  <div class="container">
+                                    <p class="lead">Sorry, there is no posts in this category yet.</p>
+                                  </div>
+                                </div>';
+                        }else{
+                          foreach ($posts as $post) {
+                            echo '<div class="card">
+                              <div class="card-body">
+                                <h4 class="card-title">'.$post["postTitle"].'</h4>
+                                <h6 class="card-subtitle mb-2 text-muted"> Posted on '. $post["timestamp"].' </h6>
+                                <p class="card-text"> '.substr($post["postText"], 0, 100).'....</p>
+                                <a href="postdetails.php?post='.$post["postID"].'" class="card-link"> See more</a>
+                              </div>
+                            </div>';
+                          }
+                        }
+                      echo '</div>';
+                    }
+                  }
+                ?>
+              </div>
+              </div>
+
+              <!-- Sidebar Widgets Column -->
+              <div class="col-md-4">
+                  <div class="card my-4">
+                      <h5 class="card-header">Side Widget</h5>
+                      <div class="card-body">
+                      Hello, I am side widget! Want to see something fun ?<br>
+                      <a href="https://www.pinterest.com/pin/457256168389539279/" target="_blank" > CLICK ME </a>
+                      </div>
+                  </div>
+              </div>
+          </div> <!-- /.row -->
         </div>
 
-        <!-- Sidebar Widgets Column -->
-        <div class="col-md-4">
-
-            <!-- Search Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Search</h5>
-                <div class="card-body">
-                <div class="input-group">
-                    <input type="text" class="form-control" placeholder="Search for...">
-                    <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="button">Go!</button>
-                    </span>
-                </div>
-                </div>
-            </div>
-
-            <!-- Categories Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Categories</h5>
-                <div class="card-body">
-                <div class="row">
-                    <div class="col-lg-6">
-                        <ul class="list-unstyled mb-0">
-                            <li>
-                                <a href="#">Web Design</a>
-                            </li>
-                            <li>
-                                <a href="#">HTML</a>
-                            </li>
-                            <li>
-                                <a href="#">Freebies</a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-6">
-                    <ul class="list-unstyled mb-0">
-                        <li>
-                        <a href="#">JavaScript</a>
-                        </li>
-                        <li>
-                        <a href="#">CSS</a>
-                        </li>
-                        <li>
-                        <a href="#">Tutorials</a>
-                        </li>
-                    </ul>
-                    </div>
-                </div>
-                </div>
-            </div>
-
-            <!-- Side Widget -->
-            <div class="card my-4">
-                <h5 class="card-header">Side Widget</h5>
-                <div class="card-body">
-                You can put anything you want inside of these side widgets. They are easy to use, and feature the new Bootstrap 4 card containers!
-                </div>
-            </div>
-
-        </div>
-
-      </div>
-      <!-- /.row -->
-
-    </div>
-    <!-- /.container -->
+    </div>  <!-- /.container -->
 
     <!-- footer -->
     <?php include '../template/footer.html';?>
