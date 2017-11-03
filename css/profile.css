@@ -76,3 +76,7 @@ h1 {
 thead{
   background-color: #B3B3B3;
 }
+
+form#collapse{
+  margin-left: 5em;
+}

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	$db = new PDO("mysql:host=localhost;dbname=csc4370forum", "root", "");
 	try {
 		//connect as appropriate as above
@@ -19,13 +20,15 @@
 	} else {
 		$in = $db->query("INSERT INTO user VALUES(".$username.",".$password.", ".$email.", ".$firstname.",".$lastname.")");*/
 	if($stmt->execute()){
+		$stmt2 = $db->query("SELECT userID FROM user WHERE email='$email' ");
+		$id = $stmt2->fetchColumn(0);
 		$message = "Registration successful.";
 		$_SESSION["username"] = $username;
-		$_SESSION["UID"] = $db->query("SELECT userID FROM user WHERE email=" .$email. "");
+		$_SESSION["UID"] = $id;
 		$_SESSION["admin"] = false;
 		header("location:home.php");
 	} else {
-		$message = "Registration failed.";	
+		$message = "Registration failed.";
 		header("location:signup.php");
 	}
 	$db = null;
