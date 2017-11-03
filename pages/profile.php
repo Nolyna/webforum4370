@@ -1,5 +1,17 @@
 <!DOCTYPE html>
-<?php session_start(); ?>
+<?php
+  session_start();
+  include_once '../include/dbfunction.php';
+  include_once '../include/postfunction.php';
+  include_once '../include/userfunction.php';
+
+  $users = getuser($_SESSION["UID"]);
+  foreach ($users as  $i => $user) {
+    $userName = $user['firstName'].' '.$user['lastName'];
+    $userAbout = $user['about'];
+    $userEmail = $user['email'];
+  }
+?>
 <html lang="en">
 
   <head>
@@ -12,6 +24,7 @@
     <title> Dashboard </title>
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/profile.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
 
   </head>
 

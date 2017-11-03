@@ -17,6 +17,7 @@
 
     <link href="../vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <link href="../css/blog-post.css" rel="stylesheet">
+    <link href="../css/main.css" rel="stylesheet">
 
   </head>
 
@@ -25,7 +26,7 @@
     <?php include '../template/navbar.php';?>
 
     <!-- Page Content -->
-    <div class="container">
+    <div class="container page-content">
 
         <!-- Content Column -->
         <div class="">
@@ -33,6 +34,7 @@
             <!-- Tab list -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <?php
+                echo 'seeion: u'.$_SESSION["username"].' i '.$_SESSION["UID"].' a '.$_SESSION["admin"] = false;
                   $categories = getCategories();
                   foreach ($categories as  $i =>  $category) {
                     if($i == 0){
