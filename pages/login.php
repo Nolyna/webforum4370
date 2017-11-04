@@ -27,8 +27,8 @@
                         <form action = "userlogin.php" method = "post">
                             <h2>Login</h2>
                             <div class="form-group">
-                                <label for="username"> Email</label>
-                                <input type="text" class="form-control" name = "email" id="email" aria-describedby="emailHelp" placeholder="Username">
+                                <label for="username">Username</label>
+                                <input type="text" class="form-control" name = "username" id="username" aria-describedby="emailHelp" placeholder="Username">
                             </div>
                             <div class="form-group">
                                 <label for="password">Password</label>
