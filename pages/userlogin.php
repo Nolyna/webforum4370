@@ -19,7 +19,7 @@
     <div class="container justify-content-center">
     <?php
 			if(isset($_POST["username"]) && isset($_POST["password"])){
-					$email = $_POST["username"];
+					$username = $_POST["username"];
 					$stmt = $db->prepare("SELECT * FROM user WHERE username ='$username' ");
 					$stmt -> execute();
 					$result = $stmt->fetch(PDO::FETCH_ASSOC);
