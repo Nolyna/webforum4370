@@ -64,7 +64,7 @@
                         if (empty($posts)) {
                           echo '<div class="jumbotron jumbotron-fluid">
                                   <div class="container">
-                                    <p class="lead">Sorry, there is no posts in this category yet.</p>
+                                    <p class="lead">Sorry, there are no posts in this category yet.</p>
                                   </div>
                                 </div>';
                         }else{
@@ -85,7 +85,7 @@
                         if (empty($posts)) {
                           echo '<div class="jumbotron jumbotron-fluid">
                                   <div class="container">
-                                    <p class="lead">Sorry, there is no posts in this category yet.</p>
+                                    <p class="lead">Sorry, there are no posts in this category yet.</p>
                                   </div>
                                 </div>';
                         }else{
@@ -112,7 +112,7 @@
                   <div class="card my-4">
                       <h5 class="card-header">Side Widget</h5>
                       <div class="card-body">
-                      Hello, I am side widget! Want to see something fun ?<br>
+                      Hello, I am side widget! Want to see something fun?<br>
                       <a href="https://www.pinterest.com/pin/457256168389539279/" target="_blank" > CLICK ME </a>
                       </div>
                   </div>
