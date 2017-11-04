@@ -34,7 +34,6 @@
             <!-- Tab list -->
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <?php
-                echo 'seeion: u'.$_SESSION["username"].' i '.$_SESSION["UID"].' a '.$_SESSION["admin"] = false;
                   $categories = getCategories();
                   foreach ($categories as  $i =>  $category) {
                     if($i == 0){

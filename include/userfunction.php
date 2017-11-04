@@ -52,6 +52,19 @@ function  countUserLike($uid){
     }
     return $push;
   }
+
+  // get all the users admin
+  function getUserAdmin(){
+    $db = dbconnect();
+    $push = array();
+    $get = $db->prepare(" SELECT * FROM user where typeID = '1  ");
+    $get->execute();
+    while($row = $get->fetch(PDO::FETCH_ASSOC)){
+        $row = array_map('stripslashes', $row);
+        $push[] = $row;
+    }
+    return $push;
+  }
   // get all the comment written by user
   function getUserComments(){}
 

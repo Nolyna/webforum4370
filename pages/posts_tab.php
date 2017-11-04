@@ -2,22 +2,22 @@
   <button class="btn btn-primary" type="button" data-toggle="collapse" data-target="#collapse" aria-expanded="false" aria-controls="collapse">
     Create a new post
   </button>
-    <form class="collapse" id="collapse">
+    <form action="newpost.php" method="post" class="collapse" id="collapse">
       <div class="form-group">
         <label for="titleInput">Title</label>
-        <input type="text" class="form-control" id="titleInput">
+        <input type="text" class="form-control" id="titleInput" name="titleInput">
       </div>
       <div class="form-group">
         <label for="textInput">Enter your message</label>
-        <textarea class="form-control" id="textInput" rows="4" required></textarea>
+        <textarea class="form-control" id="textInput" name="textInput" rows="4" required></textarea>
       </div>
       <div class="form-group">
         <label for="Select">Select category</label>
-        <select class="form-control" id="Select">
+        <select class="form-control" id="Select" name="cat">
           <?php
           $categories = getCategories();
           foreach ($categories as  $i =>  $category) {
-            echo '<option value="'.$category["categoryID"].'">'.$category["categoryText"].'</option>';
+            echo '<option value='.$category["categoryID"].'>'.$category["categoryText"].'</option>';
           }
           ?>
         </select>

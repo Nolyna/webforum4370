@@ -1,17 +1,7 @@
 <!DOCTYPE html>
 <?php session_start(); ?>
 <html lang="en">
-<?php
-	include ("userlogin.php");
-	if(isset($_POST["email"]) && isset($_POST["password"])){
-		$log = userlogin($_POST["email"], $_POST["password"]);
-		if($log == true){
-			header("location:home.php");
-		}
-	}
-?>
     <head>
-
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <meta name="description" content="Login page">
@@ -37,7 +27,7 @@
                         <form action = "userlogin.php" method = "post">
                             <h2>Login</h2>
                             <div class="form-group">
-                                <label for="username">Username</label>
+                                <label for="username"> Email</label>
                                 <input type="text" class="form-control" name = "email" id="email" aria-describedby="emailHelp" placeholder="Username">
                             </div>
                             <div class="form-group">
@@ -51,7 +41,7 @@
 							?>
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </form>
-						
+
                     </div>
                 </div>
 
