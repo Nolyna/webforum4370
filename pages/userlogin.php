@@ -18,9 +18,9 @@
   <body>
     <div class="container justify-content-center">
     <?php
-			if(isset($_POST["email"]) && isset($_POST["password"])){
-					$email = $_POST["email"];
-					$stmt = $db->prepare("SELECT * FROM user WHERE email ='$email' ");
+			if(isset($_POST["username"]) && isset($_POST["password"])){
+					$email = $_POST["username"];
+					$stmt = $db->prepare("SELECT * FROM user WHERE username ='$username' ");
 					$stmt -> execute();
 					$result = $stmt->fetch(PDO::FETCH_ASSOC);
 					if($_POST["password"] == $result["password"]){
