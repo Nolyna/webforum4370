@@ -52,7 +52,33 @@ function  countUserLike($uid){
     }
     return $push;
   }
-
+  
+  //get all users
+  function getAllUsers(){
+	$db = dbconnect();
+    $push = array();
+    $get = $db->prepare(" SELECT * FROM user");
+    $get->execute();
+    while($row = $get->fetch(PDO::FETCH_ASSOC)){
+        $row = array_map('stripslashes', $row);
+        $push[] = $row;
+    }
+    return $push;	
+  }
+  
+  //get all messages sent to admins
+  function getAllMessages(){
+	$db = dbconnect();
+    $push = array();
+    $get = $db->prepare(" SELECT * FROM message");
+    $get->execute();
+	 while($row = $get->fetch(PDO::FETCH_ASSOC)){
+        $row = array_map('stripslashes', $row);
+        $push[] = $row;
+    }
+    return $push;
+  }
+  
   // get all the users admin
   function getUserAdmin(){
     $db = dbconnect();
