@@ -47,18 +47,33 @@
 								  <th scope="col">Last Name</th>
 								  <th scope="col">Username</th>
 								  <th scope="col">Email</th>
+								  <th scope="col">Admin?</th>
 								</tr>
 							  </thead>
 							  <tbody>' ;
 					foreach ($users as $i => $user) {
-						echo '
-						  <tr">
-							<td>'.$i.'</td>
-							<td>'.$user["firstName"].' </td>
-							<td>'.$user["lastName"].'</td>
-							<td>'.$user["username"].'</td>
-							<td>'.$user["email"].'</td>
-						  </tr>';
+						if($users["typeID"] == 1){
+							echo '
+							  <tr">
+								<td>'.$i.'</td>
+								<td>'.$user["firstName"].' </td>
+								<td>'.$user["lastName"].'</td>
+								<td>'.$user["username"].'</td>
+								<td>'.$user["email"].'</td>
+								<td>Yes</td>
+							  </tr>';
+						} else {
+							echo '
+							  <tr">
+								<td>'.$i.'</td>
+								<td>'.$user["firstName"].' </td>
+								<td>'.$user["lastName"].'</td>
+								<td>'.$user["username"].'</td>
+								<td>'.$user["email"].'</td>
+								<td>No</td>
+							  </tr>			
+							'
+						}
 					}
 					echo' </tbody></table>';
 				}	
