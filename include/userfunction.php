@@ -70,8 +70,8 @@ function  countUserLike($uid){
 
   //sent email to admin
   function sendMessage($email,$message){
-    //$get = $db->prepare(" INSERT INTO message(messageText,fromUser) VALUES($email,$message)" );
-    //$get->execute();
+    /*$get = $db->prepare(" INSERT INTO message(messageText,fromUser) VALUES($email,$message)" );
+    $get->execute();*/
     return true;
   }
 
