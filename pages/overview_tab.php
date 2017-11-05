@@ -21,8 +21,8 @@
 					foreach ($messages as $i => $messages) {
 						echo '
 							<tr">
-								<td>'.$email.'</td>
-								<td>'.$messageText.' </td>
+								<td>'.$messages["email"].'</td>
+								<td>'.$messages["messageText"].' </td>
 							</tr>';
 					}
 					echo' </tbody></table>';
