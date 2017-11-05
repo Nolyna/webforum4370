@@ -1,6 +1,6 @@
 <div class="row">
 	<div class="col-md-7">
-		<form action = "messages_tab.php" method = "post">
+		<form action = "" method = "post">
 			<h2>Message an Administrator</h2>
 			<div class="form-group">
 				<label for="username">Email</label>
