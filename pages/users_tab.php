@@ -6,7 +6,7 @@
       if (empty($users)) {
       echo '<div class="jumbotron jumbotron-fluid">
               <div class="container">
-                <p class="lead">Sorry, You do not have others admin yet.</p>
+                <p class="lead">Sorry, You do not have other admins yet.</p>
               </div>
             </div>';
       }else{
