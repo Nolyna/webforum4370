@@ -88,6 +88,20 @@ CREATE TABLE `post` (
 -- --------------------------------------------------------
 
 --
+-- Structure de la table `message`
+--
+
+CREATE TABLE `message` (
+  `messageID` int(11) NOT NULL,
+  `messageText` text NOT NULL,
+  `timestamp` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  `userID` int(11) NOT NULL,
+  `messageSubject` text NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
+
+--
 -- Structure de la table `typeuser`
 --
 
