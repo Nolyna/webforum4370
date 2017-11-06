@@ -38,7 +38,8 @@
 		<h2>Statistics</h2>
 		<div>
 			<?php				
-				include("fusioncharts.php");
+				include("../vendor/wrappers/php-wrapper/fusioncharts.php");
+				$stats = new FusionCharts("Column2D", "Site Traffic Statistics", 500, 500, "", "json", "");
 			?>
 		</div>
 	</div>
