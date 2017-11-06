@@ -37,9 +37,35 @@
 			
 		<h2>Statistics</h2>
 		<div>
-			<?php				
+			<?php
+				$query1 = "SELECT categoryText FROM category where categoryID =" .$row2["categoryID"];
+				$query2 = "SELECT count(postID) AS number, categoryID FROM post GROUP BY categoryID";
+				$db = connect();
+				$get = $db->prepare($query2);
+				$get->execute();
+				$row = $get->fetch(PDO::FETCH_ASSOC);
 				include("../vendor/wrappers/php-wrapper/fusioncharts.php");
-				$stats = new FusionCharts("Column2D", "Site Traffic Statistics", 500, 500, "", "json", "");
+				$statsData = array( 
+					"chart" => array(
+						"caption" => "Forum Site Traffic",
+						"subCaption" => "Web Forum 4370",
+						"xAxisName" => "Time(Hours, Days, Weeks, Months, Years)",
+						"yAxisName" => "Number of Posts (Either)",
+						"paletteColors" => "#0075c2",
+						"bgcolor" => "#ffffff",
+						"borderAlpha" => "20"
+					)		
+				);
+				$statsData["data"] = array();
+				while ($row = mysql_fetch_array($result)){
+					$get = $db->prepare($query1);
+					$get->execute();
+					$row2 = $get->fetch(PDO::FETCH_ASSOC);
+					array_push($statsData["data"], array("label" => $row2["categoryText"], "value" => $row["number"]));	
+				}
+				$jsonEncodedData = json_encode($statsData);
+				$columnChart = new FusionCharts("column2D", "ForumStats", 600, 300, "forumchart", "json", $jsonEncodedData);
+				$columnChart->render();
 			?>
 		</div>
 	</div>
