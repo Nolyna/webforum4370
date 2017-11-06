@@ -1,5 +1,5 @@
-<div class="row">
-	<div class="col-md-7">
+
+	<div class="">
 		<h2>Messages</h2>
 		<?php
 			$messages = array_filter(getAllMessages());
@@ -18,28 +18,16 @@
 					</tr>
 				  </thead>
 				  <tbody>' ;
-				foreach ($messages as $i => $messages) {
+				foreach ($messages as $message) {
 					echo '
-					  <tr">
-						<td>'.$messages["email"].'</td>
-						<td>'.$messages["messageText"].'</td>
+					  <tr>
+						<td>'.$message["email"].'</td>
+						<td>'.$message["messageText"].'</td>
 					  </tr>';
 				}
 				echo' </tbody></table>';
 			}
 		?>
-		<form action = "" method = "post">
-			<h2>Send a Message</h2>
-			<div class="form-group">
-				<label for="username">Email</label>
-				<input type="text" class="form-control" id="email" name = "email" placeholder="Email">
-			</div>
-			<div class="form-group">
-				<label for="firstname">Message</label>
-				<input type="text" class="form-control" id="message" name = "message" placeholder="Message">
-			</div>
-			 <button type="submit" class="btn btn-primary">Send</button>
-		</form>
 	</div>
-</div>
+
 	

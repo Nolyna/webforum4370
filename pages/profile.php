@@ -12,7 +12,17 @@
     $userAbout = $user['about'];
     $userEmail = $user['email'];
   }
+  
+  if(isset($_POST['messageInput']) && isset($_POST['emailInput'])){
+    if(sendMessage($_POST['emailInput'],$_POST['messageInput'])){
+        echo "<script> $('#okModal').modal('show'); </script>";
+		
+    }else{
+        echo "<script> $('#errorModal').modal('show'); </script> ";
+    }
+  }
 ?>
+
 <html lang="en">
 
   <head>
@@ -55,7 +65,7 @@
                           <a class="nav-link" id="overview-tab" data-toggle="pill" href="#overview" role="tab" aria-controls="overview" aria-selected="false">Overview</a>
                       </li>
                       <li class="nav-item">
-                          <a class="nav-link " id="message-tab" data-toggle="pill" href="#message" role="tab" aria-controls="message" aria-selected="false">Message</a>
+                          <a class="nav-link " id="message-tab" data-toggle="pill" href="#messages" role="tab" aria-controls="message" aria-selected="false">Message</a>
                       </li>
                       <li class="nav-item">
                           <a class="nav-link " id="users-tab" data-toggle="pill" href="#users" role="tab" aria-controls="users" aria-selected="false">Users</a>

@@ -12,14 +12,14 @@
 <h1> Let's Talk </h1>
 <p> send us your critics, appreciations or isssue over here</p>
 
-<form action="#help" method="post">
+<form action="#" method="post">
   <div class="form-group">
     <label for="emailInput">Enter your email address</label>
-    <input type="email" class="form-control" id="emailInput" placeholder="name@example.com" required>
+    <input type="email" class="form-control" id="emailInput" name="emailInput" placeholder="name@example.com" required>
   </div>
   <div class="form-group">
     <label for="messageInput">Enter your message</label>
-    <textarea class="form-control" id="messageInput" rows="4" required></textarea>
+    <textarea class="form-control" id="messageInput" name="messageInput" rows="4" required></textarea>
   </div>
   <div class="text-right">
     <button type="submit" class="btn btn-primary"> Send </button>
