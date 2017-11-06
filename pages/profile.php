@@ -4,6 +4,7 @@
   include_once '../include/dbfunction.php';
   include_once '../include/postfunction.php';
   include_once '../include/userfunction.php';
+  include_once '../vendor/wrappers/php-wrapper/fusioncharts.php';
 
   $users = getuser($_SESSION["UID"]);
   foreach ($users as  $i => $user) {
