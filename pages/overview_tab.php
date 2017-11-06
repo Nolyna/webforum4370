@@ -1,34 +1,5 @@
 <div class="row">
 	<div class="col-md-7">
-		<h2>Messages</h2>
-			<?php
-				$messages = array_filter(getAllMessages());
-				if (empty($messages)) {
-					echo '<div class="jumbotron jumbotron-fluid">
-							<div class="container">
-								<p class="lead">No messages yet.</p>
-							</div>
-						  </div>';
-				}else{
-					echo '<table class="table">
-							<thead>
-								<tr>
-									<th scope="col">Email</th>
-									<th scope="col">Message</th>
-								</tr>
-							</thead>
-						  <tbody>' ;
-					foreach ($messages as $i => $messages) {
-						echo '
-							<tr">
-								<td>'.$messages["email"].'</td>
-								<td>'.$messages["messageText"].' </td>
-							</tr>';
-					}
-					echo' </tbody></table>';
-				}	
-			?>
-			
 		<h2>Users</h2>
 			<?php
 				$users = array_filter(getAllUsers());
