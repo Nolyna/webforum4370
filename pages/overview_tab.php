@@ -36,10 +36,10 @@
 			?>
 			
 		<h2>Statistics</h2>
-			<div>
-				<?php
-					
-				?>
-			</div>
+		<div>
+			<?php				
+				include("fusioncharts.php");
+			?>
+		</div>
 	</div>
 </div>
