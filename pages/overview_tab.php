@@ -1,5 +1,3 @@
-<div class="row">
-	<div class="col-md-7">
 		<h2>Users</h2>
 			<?php
 				$users = array_filter(getAllUsers());
@@ -38,13 +36,8 @@
 		<h2>Statistics</h2>
 		<div>
 			<?php
-				$query1 = "SELECT categoryText FROM category where categoryID =" .$row2["categoryID"];
-				$query2 = "SELECT count(postID) AS number, categoryID FROM post GROUP BY categoryID";
-				$db = connect();
-				$get = $db->prepare($query2);
-				$get->execute();
-				$row = $get->fetch(PDO::FETCH_ASSOC);
-				include("../vendor/wrappers/php-wrapper/fusioncharts.php");
+				$xDatas = getCatStat();
+						
 				$statsData = array( 
 					"chart" => array(
 						"caption" => "Forum Site Traffic",
@@ -57,16 +50,19 @@
 					)		
 				);
 				$statsData["data"] = array();
-				while ($row = mysql_fetch_array($result)){
-					$get = $db->prepare($query1);
-					$get->execute();
-					$row2 = $get->fetch(PDO::FETCH_ASSOC);
-					array_push($statsData["data"], array("label" => $row2["categoryText"], "value" => $row["number"]));	
+				
+				foreach ($xDatas as $xData){
+					array_push($statsData["data"], array("label" => $xData["category"], "value" => $xData["number"]));
 				}
+				/*while ($row = $get->fetch(PDO::FETCH_ASSOC)){
+					$get2 = $db->prepare("SELECT COUNT(postID) AS number FROM post where categoryID ='$row["categoryID"]' ");
+					$get2->execute();
+					$row2 = $get2->fetch(PDO::FETCH_ASSOC);
+					echo $row["number"];
+					array_push($statsData["data"], array("label" => $row["categoryText"], "value" => $row2["number"]));	
+				}*/
 				$jsonEncodedData = json_encode($statsData);
 				$columnChart = new FusionCharts("column2D", "ForumStats", 600, 300, "forumchart", "json", $jsonEncodedData);
 				$columnChart->render();
 			?>
 		</div>
-	</div>
-</div>
