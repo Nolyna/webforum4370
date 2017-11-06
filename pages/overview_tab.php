@@ -21,7 +21,7 @@
 							  <tbody>' ;
 					foreach ($users as $i => $user) {
 						echo '
-							<tr">
+							<tr>
 								<td>'.$i.'</td>
 								<td>'.$user["firstName"].' </td>
 								<td>'.$user["lastName"].'</td>
@@ -35,12 +35,34 @@
 			
 		<h2>Statistics</h2>
 		<div>
-			<?php	
-				
-				/*$xDatas = getCatStat();
-				echo $xDatas;
+			<?php
+				echo "x";
+				$xDatas = array_filter(getCategories());
+				if (empty($xDatas)) {
+					echo '<div class="jumbotron jumbotron-fluid">
+							<div class="container">
+								<p class="lead">Sorry, You do not have any data yet.</p>
+							</div>
+						  </div>';
+				}else{
+					echo '<table class="table">
+							  <thead>
+								<tr>
+								  <th scope="col">Category</th>
+								</tr>
+							  </thead>
+							  <tbody>' ;
+					foreach ($xDatas as $xData) {
+						echo '
+							<tr>
+								<td>'.$xData["categoryText"].' </td>
+							</tr>';
+					}
+					echo' </tbody></table>';
+				}	
+				//echo $xDatas;
 						
-				$statsData = array( 
+				/*$statsData = array( 
 					"chart" => array(
 						"caption" => "Forum Site Traffic",
 						"subCaption" => "Web Forum 4370",
