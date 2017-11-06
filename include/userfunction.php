@@ -70,7 +70,7 @@ function  countUserLike($uid){
   function getAllMessages(){
 	$db = dbconnect();
     $push = array();
-    $get = $db->prepare(" SELECT * FROM message");
+    $get = $db->prepare(" SELECT * FROM message ORDER BY messageID DESC  ");
     $get->execute();
 	 while($row = $get->fetch(PDO::FETCH_ASSOC)){
         $row = array_map('stripslashes', $row);
