@@ -39,13 +39,5 @@
 			<div>
 				
 			</div>
-		<?php
-			/*
-				things that could be included in overview:
-				messages
-				list of users
-				forum statistics
-			*/
-		?>
 	</div>
 </div>
