@@ -120,10 +120,13 @@
 		echo $row["categoryID"];
 		/*$get2 = $db->prepare("SELECT COUNT(postID) AS number FROM post where categoryID ='$row["categoryID"]' ");
 		$get2->execute();
-		$row2 = $get2->fetch(PDO::FETCH_ASSOC);*/
-		$push = array("category"=>"$row["categoryText"]", "number"=>"$row["categoryID"]"); 
-		echo $push;
+		$row2 = $get2->fetch(PDO::FETCH_ASSOC);
+		$push[] = array("category" => ".$row['categoryText'].", "number" => ".$row['categoryID']."); 
+		*/
+		$row = array_map('stripslashes', $row);
+        $push[] = $row;
 	}
+	echo $push;
 	return $push;
   }
   /*function getCategories(){}
