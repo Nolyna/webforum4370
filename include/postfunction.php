@@ -110,8 +110,20 @@
     }
     return $push;
   }
+  
+  function getCatStat(){
+	$db = connect();
+	$push = array();
+	$get = $db->prepare("SELECT * FROM category");
+	$get->execute();	
+	while ($row = $get->fetch(PDO::FETCH_ASSOC)){
+		$get2 = $db->prepare("SELECT COUNT(postID) AS number FROM post where categoryID ='$row["categoryID"]' ");
+		$get2->execute();
+		$row2 = $get2->fetch(PDO::FETCH_ASSOC);
+		array_push($statsData["data"], array("label" => $row["categoryText"], "value" => $row2["number"]));	
+	}
+  }
   /*function getCategories(){}
-  function getCategories(){}
   function getCategories(){}
   function getCategories(){}
   function getCategories(){}*/
