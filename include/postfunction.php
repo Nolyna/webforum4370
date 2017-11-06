@@ -1,7 +1,7 @@
 <?php
   //include_once 'dbfunction.php';
 
-  function createPost($text, $pid, $uid){
+  function createComment($text, $pid, $uid){
     $db = dbconnect();
     $get = $db->prepare(" INSERT INTO comment(commentText, postID, userID) VALUES ('$text','$pid','$uid')  ");
     if($get->execute()){
@@ -11,9 +11,9 @@
     }
   }
 
-  function createComment($title, $text, $cid, $uid){
+  function createPost($title, $text, $cid, $uid){
     $db = dbconnect();
-    $get = $db->prepare(" INSERT INTO comment(postTitle, postText, categoryID, userID) VALUES ('$title','$text','$cid','$uid')  ");
+    $get = $db->prepare(" INSERT INTO post (postTitle, postText, categoryID, userID) VALUES ('$title','$text','$cid','$uid')  ");
     if($get->execute()){
       return true;
     }else {
