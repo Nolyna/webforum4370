@@ -70,7 +70,7 @@ function  countUserLike($uid){
   function getAllMessages(){
 	$db = dbconnect();
     $push = array();
-    $get = $db->prepare(" SELECT * FROM message ORDER BY messageID DESC  ");
+    $get = $db->prepare(" SELECT * FROM message");
     $get->execute();
 	 while($row = $get->fetch(PDO::FETCH_ASSOC)){
         $row = array_map('stripslashes', $row);
@@ -96,8 +96,9 @@ function  countUserLike($uid){
 
   //sent email to admin
   function sendMessage($email,$message){
-    /*$get = $db->prepare(" INSERT INTO message(messageText,fromUser) VALUES($email,$message)" );
-    $get->execute();*/
+	$db = dbconnect();
+    $get = $db->prepare(" INSERT INTO message(messageText,email) VALUES('$email','$message')" );
+    $get->execute();
     return true;
   }
 
