@@ -37,7 +37,9 @@
 			
 		<h2>Statistics</h2>
 			<div>
-				
+				<?php
+					
+				?>
 			</div>
 	</div>
 </div>
