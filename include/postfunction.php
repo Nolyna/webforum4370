@@ -117,7 +117,6 @@
 	$get = $db->prepare("SELECT * FROM category");
 	$get->execute();	
 	while ($row = $get->fetch(PDO::FETCH_ASSOC)){
-		echo $row["categoryID"];
 		/*$get2 = $db->prepare("SELECT COUNT(postID) AS number FROM post where categoryID ='$row["categoryID"]' ");
 		$get2->execute();
 		$row2 = $get2->fetch(PDO::FETCH_ASSOC);
@@ -126,13 +125,10 @@
 		$row = array_map('stripslashes', $row);
         $push[] = $row;
 	}
-	echo $push;
 	return $push;
   }
-  /*function getCategories(){}
-  function getCategories(){}
-  function getCategories(){}
-  function getCategories(){}*/
+  
+ 
 
 
 
