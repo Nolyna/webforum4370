@@ -1,9 +1,6 @@
 <?php
-
-    class FusionCharts {
-        
+    class FusionCharts {   
         private $constructorOptions = array();
-
         private $constructorTemplate = '
         <script type="text/javascript">
             FusionCharts.ready(function () {
@@ -28,7 +25,6 @@
             isset($renderAt) ? $this->constructorOptions['renderAt'] = $renderAt : '';
             isset($dataFormat) ? $this->constructorOptions['dataFormat'] = $dataFormat : '';
             isset($dataSource) ? $this->constructorOptions['dataSource'] = $dataSource : '';
-
             $tempArray = array();
             foreach($this->constructorOptions as $key => $value) {
                 if ($key === 'dataSource') {
@@ -37,9 +33,7 @@
                     $tempArray[$key] = $value;
                 }
             }
-            
             $jsonEncodedOptions = json_encode($tempArray);
-            
             if ($dataFormat === 'json') {
                 $jsonEncodedOptions = preg_replace('/\"__dataSource__\"/', $this->constructorOptions['dataSource'], $jsonEncodedOptions);
             } elseif ($dataFormat === 'xml') { 
@@ -51,7 +45,6 @@
                 $jsonEncodedOptions = preg_replace('/__dataSource__/', $this->constructorOptions['dataSource'], $jsonEncodedOptions);
             }
             $newChartHTML = preg_replace('/__constructorOptions__/', $jsonEncodedOptions, $this->constructorTemplate);
-
             echo $newChartHTML;
         }
 
@@ -61,6 +54,5 @@
            $renderHTML = preg_replace('/__chartId__/', $this->constructorOptions['id'], $this->renderTemplate);
            echo $renderHTML;
         }
-
     }
 ?>
