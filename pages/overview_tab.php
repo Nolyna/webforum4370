@@ -35,15 +35,17 @@
 			
 		<h2>Statistics</h2>
 		<div>
-			<?php
-				$xDatas = getCatStat();
+			<?php	
+				
+				/*$xDatas = getCatStat();
+				echo $xDatas;
 						
 				$statsData = array( 
 					"chart" => array(
 						"caption" => "Forum Site Traffic",
 						"subCaption" => "Web Forum 4370",
-						"xAxisName" => "Time(Hours, Days, Weeks, Months, Years)",
-						"yAxisName" => "Number of Posts (Either)",
+						"xAxisName" => "Time",
+						"yAxisName" => "Number of Posts",
 						"paletteColors" => "#0075c2",
 						"bgcolor" => "#ffffff",
 						"borderAlpha" => "20"
@@ -51,7 +53,7 @@
 				);
 				$statsData["data"] = array();
 				
-				foreach ($xDatas as $xData){
+				/*foreach ($xDatas as $xData){
 					array_push($statsData["data"], array("label" => $xData["category"], "value" => $xData["number"]));
 				}
 				/*while ($row = $get->fetch(PDO::FETCH_ASSOC)){
@@ -61,8 +63,9 @@
 					echo $row["number"];
 					array_push($statsData["data"], array("label" => $row["categoryText"], "value" => $row2["number"]));	
 				}*/
+				/*
 				$jsonEncodedData = json_encode($statsData);
 				$columnChart = new FusionCharts("column2D", "ForumStats", 600, 300, "forumchart", "json", $jsonEncodedData);
-				$columnChart->render();
+				$columnChart->render();*/
 			?>
 		</div>
