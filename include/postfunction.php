@@ -76,21 +76,29 @@
     }
     return $push;
   }
+  
+  function getStat($id){
+	$db = connect();
+	$get = $db->prepare(" SELECT COUNT(postID) as number FROM post WHERE categoryID = '$id' ");
+	$get->execute();	
+	$row = $get->fetch(PDO::FETCH_ASSOC);
+	return $row['number'];  
+  }
 
   //Search in all the post
   function searchPost($text){
+	$db = dbconnect();
     $push = array();
-    $get = $db->prepare(" SELECT * FROM post where postId = '$pid'  ");
-    $get->execute();
+    $get = $db->prepare(" SELECT * FROM post where postTitle like ?  ");
+	$params = array("%$text%");
+    $get->execute($params);
     while($row = $get->fetch(PDO::FETCH_ASSOC)){
         $row = array_map('stripslashes', $row);
         $push[] = $row;
     }
-    foreach ($push as  $p) {
-      echo '<script> console.log("'.$p['categoryID'].'"); </script>';
-    }
     return $push;
   }
+  
   //Search in all the post by category
   function searchPostCat($text,$id){
     $get = $db->prepare(" SELECT * FROM post where postTitle like '$text'  ");
@@ -111,22 +119,7 @@
     return $push;
   }
   
-  function getCatStat(){
-	$db = connect();
-	$push = array();
-	$get = $db->prepare("SELECT * FROM category");
-	$get->execute();	
-	while ($row = $get->fetch(PDO::FETCH_ASSOC)){
-		/*$get2 = $db->prepare("SELECT COUNT(postID) AS number FROM post where categoryID ='$row["categoryID"]' ");
-		$get2->execute();
-		$row2 = $get2->fetch(PDO::FETCH_ASSOC);
-		$push[] = array("category" => ".$row['categoryText'].", "number" => ".$row['categoryID']."); 
-		*/
-		$row = array_map('stripslashes', $row);
-        $push[] = $row;
-	}
-	return $push;
-  }
+  
   
  
 
