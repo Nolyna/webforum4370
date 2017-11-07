@@ -17,6 +17,6 @@
 	$_SESSION["username"] = $username;
 	$_SESSION["UID"] = $id;
 	$_SESSION["admin"] = true;
-	header("location:home.php");
+	header("location:login.php");
 	$db = null;
 ?>
