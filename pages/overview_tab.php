@@ -36,7 +36,6 @@
 		<h2>Statistics</h2>
 		<div>
 			<?php
-				echo "x";
 				$xDatas = array_filter(getCategories());
 				if (empty($xDatas)) {
 					echo '<div class="jumbotron jumbotron-fluid">
@@ -53,6 +52,8 @@
 							  </thead>
 							  <tbody>' ;
 					foreach ($xDatas as $xData) {
+						//$dataId = array_filter(getStat($xData["categoryID"]));
+						//if (empty($results)){ echo 'noooooo';}
 						echo '
 							<tr>
 								<td>'.$xData["categoryText"].' </td>
