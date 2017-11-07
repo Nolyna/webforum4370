@@ -52,11 +52,12 @@
 							  </thead>
 							  <tbody>' ;
 					foreach ($xDatas as $xData) {
-						//$dataId = array_filter(getStat($xData["categoryID"]));
+						$dataId = getStat($xData["categoryID"]);
 						//if (empty($results)){ echo 'noooooo';}
 						echo '
 							<tr>
 								<td>'.$xData["categoryText"].' </td>
+								<td>'.$dataId.' </td>
 							</tr>';
 					}
 					echo' </tbody></table>';
