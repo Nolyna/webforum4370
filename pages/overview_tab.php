@@ -36,35 +36,7 @@
 		<h2>Statistics</h2>
 		<div>
 			<?php
-				$xDatas = array_filter(getCategories());
-				if (empty($xDatas)) {
-					echo '<div class="jumbotron jumbotron-fluid">
-							<div class="container">
-								<p class="lead">Sorry, You do not have any data yet.</p>
-							</div>
-						  </div>';
-				}else{
-					echo '<table class="table">
-							  <thead>
-								<tr>
-								  <th scope="col">Category</th>
-								</tr>
-							  </thead>
-							  <tbody>' ;
-					foreach ($xDatas as $xData) {
-						$dataId = getStat($xData["categoryID"]);
-						//if (empty($results)){ echo 'noooooo';}
-						echo '
-							<tr>
-								<td>'.$xData["categoryText"].' </td>
-								<td>'.$dataId.' </td>
-							</tr>';
-					}
-					echo' </tbody></table>';
-				}	
-				//echo $xDatas;
-						
-				/*$statsData = array( 
+				$statsData = array( 
 					"chart" => array(
 						"caption" => "Forum Site Traffic",
 						"subCaption" => "Web Forum 4370",
@@ -77,19 +49,36 @@
 				);
 				$statsData["data"] = array();
 				
-				/*foreach ($xDatas as $xData){
-					array_push($statsData["data"], array("label" => $xData["category"], "value" => $xData["number"]));
-				}
-				/*while ($row = $get->fetch(PDO::FETCH_ASSOC)){
-					$get2 = $db->prepare("SELECT COUNT(postID) AS number FROM post where categoryID ='$row["categoryID"]' ");
-					$get2->execute();
-					$row2 = $get2->fetch(PDO::FETCH_ASSOC);
-					echo $row["number"];
-					array_push($statsData["data"], array("label" => $row["categoryText"], "value" => $row2["number"]));	
-				}*/
-				/*
+				$xDatas = array_filter(getCategories());
+				if (empty($xDatas)) {
+					echo '<div class="jumbotron jumbotron-fluid">
+							<div class="container">
+								<p class="lead">Sorry, You do not have any data yet.</p>
+							</div>
+						  </div>';
+				}else{
+					echo '<table class="table">
+							  <thead>
+								<tr>
+								  <th scope="col">Category</th>
+								  <th scope="col">Number of Posts</th>
+								</tr>
+							  </thead>
+							  <tbody>' ;
+					foreach ($xDatas as $xData) {
+						$dataId = getStat($xData["categoryID"]);
+						array_push($statsData["data"], array("label" => $xData['categoryText'], "value" => $dataId));
+						echo '
+							<tr>
+								<td>'.$xData["categoryText"].' </td>
+								<td>'.$dataId.' </td>
+							</tr>';
+					}
+					echo' </tbody></table>';
+				}			
+				
 				$jsonEncodedData = json_encode($statsData);
 				$columnChart = new FusionCharts("column2D", "ForumStats", 600, 300, "forumchart", "json", $jsonEncodedData);
-				$columnChart->render();*/
+				$columnChart->render();
 			?>
 		</div>
