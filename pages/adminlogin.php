@@ -26,7 +26,7 @@
                 <div class="media">
                     <img class="align-self-center mr-1" src="../assets/door.jpeg" alt="Generic placeholder image">
                     <div class="media-body justify-content-md-center">
-                        <form action = "usersignup.php" method = "post">
+                        <form action = "adminsignup2.php" method = "post">
                             <h2> Sign Up</h2>
                             <div class="form-group">
                                 <label for="username">Username</label>
@@ -50,7 +50,6 @@
                             </div>
 
                             <button type="submit" class="btn btn-primary">Submit</button>
-							<a href="adminlogin.php"> sign up as admin </a>
                         </form>
                     </div>
                 </div>
