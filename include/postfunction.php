@@ -78,7 +78,7 @@
   }
   
   function getStat($id){
-	$db = connect();
+	$db = dbconnect();
 	$get = $db->prepare(" SELECT COUNT(postID) as number FROM post WHERE categoryID = '$id' ");
 	$get->execute();	
 	$row = $get->fetch(PDO::FETCH_ASSOC);
