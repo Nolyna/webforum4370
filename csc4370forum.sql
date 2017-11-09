@@ -92,6 +92,7 @@ CREATE TABLE `post` (
 --
 
 CREATE TABLE `message` (
+  `messageID` int(11) NOT NULL,
   `email` varchar(50) NOT NULL,
   `messageText` text NOT NULL,
 ) ENGINE=MyISAM DEFAULT CHARSET=latin1;
